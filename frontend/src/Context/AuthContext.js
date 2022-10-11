@@ -44,7 +44,7 @@ const AuthProvider = (props) => {
     }, [authTokens, loading]) // eslint-disable-line
 
     return (
-        <AuthContext.Provider value={{ user, setAuthTokens, setUser }}>
+        <AuthContext.Provider value={{ user, setAuthTokens, setUser,authTokens }}>
             {props.children}
         </AuthContext.Provider>
     )
