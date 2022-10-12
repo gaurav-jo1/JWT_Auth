@@ -9,7 +9,6 @@ const AuthProvider = (props) => {
 
     let [authTokens, setAuthTokens] = useState(() => localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
     let [user, setUser] = useState(() => localStorage.getItem('authTokens') ? jwt_decode(localStorage.getItem('authTokens')) : null)
-    let [loading, setLoading] = useState(true)
 
     const mutationR = useMutation(
         (body) => axios.post("http://127.0.0.1:8000/api/token/refresh/", body),
@@ -41,7 +40,7 @@ const AuthProvider = (props) => {
             }
         }, fourMinutes)
         return () => clearInterval(interval)
-    }, [authTokens, loading]) // eslint-disable-line
+    }, [authTokens]) // eslint-disable-line
 
     return (
         <AuthContext.Provider value={{ user, setAuthTokens, setUser,authTokens }}>
